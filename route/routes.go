@@ -29,7 +29,7 @@ func NewRoute(e *echo.Echo, db *gorm.DB) {
 
 	// user collection
 	user := e.Group("/users")
-	user.GET("", controller.GetUserController)
+	user.GET("", controller.GetUsersController)
 	user.GET("/:id", controller.GetUserController)
 	user.POST("", controller.CreateUserController)
 	user.PUT("/:id", controller.UpdateUserController)
@@ -45,7 +45,7 @@ func NewRoute(e *echo.Echo, db *gorm.DB) {
 
 	// pasien collection
 	pasien := e.Group("/pasiens")
-	pasien.GET("", controller.GetPasienController)
+	pasien.GET("", controller.GetPasiensController)
 	pasien.GET("/:id", controller.GetPasienController)
 	pasien.POST("", controller.CreatePasienController)
 	pasien.PUT("/:id", controller.UpdatePasienController)
@@ -53,7 +53,7 @@ func NewRoute(e *echo.Echo, db *gorm.DB) {
 
 	// room collection
 	room := e.Group("/rooms")
-	room.GET("", controller.GetRoomController)
+	room.GET("", controller.GetRoomsController)
 	room.GET("/:id", controller.GetRoomController)
 	room.POST("", controller.CreateRoomController)
 	room.PUT("/:id", controller.UpdateRoomController)

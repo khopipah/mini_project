@@ -10,7 +10,7 @@ import (
 	"github.com/labstack/echo/v4"
 )
 
-func GetPasiencontroller(c echo.Context) error {
+func GetPasiensController(c echo.Context) error {
 	pasiens, e := usecase.GetListPasiens()
 	if e != nil {
 		return echo.NewHTTPError(http.StatusBadRequest, e.Error())
@@ -28,7 +28,7 @@ func GetPasienController(c echo.Context) error {
 
 	if err != nil {
 		return c.JSON(http.StatusBadRequest, map[string]interface{}{
-			"messages":         "error get pasien",
+			"messages":         "data pasien tidak tersedia",
 			"errorDescription": err,
 		})
 	}
@@ -39,7 +39,7 @@ func GetPasienController(c echo.Context) error {
 	})
 }
 
-// create new pasien
+// create new docter
 func CreatePasienController(c echo.Context) error {
 	pasien := model.Pasien{}
 	c.Bind(&pasien)
@@ -57,7 +57,7 @@ func CreatePasienController(c echo.Context) error {
 	})
 }
 
-// delete pasien by id
+// delete docter by id
 func DeletePasienController(c echo.Context) error {
 	id, _ := strconv.ParseUint(c.Param("id"), 10, 32)
 	if err := usecase.DeletePasien(uint(id)); err != nil {
@@ -73,7 +73,7 @@ func DeletePasienController(c echo.Context) error {
 	})
 }
 
-// update pasien by id
+// update docter by id
 func UpdatePasienController(c echo.Context) error {
 	id, _ := strconv.ParseUint(c.Param("id"), 10, 32)
 	pasien := model.Pasien{}

@@ -3,6 +3,8 @@ package database
 import (
 	"mini_project/config"
 	"mini_project/model"
+
+	"gorm.io/gorm/clause"
 )
 
 func CreateUser(user *model.User) error {
@@ -13,7 +15,7 @@ func CreateUser(user *model.User) error {
 }
 
 func GetUsers() (users []model.User, err error) {
-	if err = config.DB.Model(&model.User{}).Preload("Blogs").Find(&users).Error; err != nil {
+	if err = config.DB.Model(&model.User{}).Preload(clause.Associations).Find(&users).Error; err != nil {
 		return
 	}
 	return
@@ -28,7 +30,7 @@ func GetUser(user *model.User) (err error) {
 
 func GetUserWithBlog(id uint) (user model.User, err error) {
 	user.ID = id
-	if err = config.DB.Model(&model.User{}).Preload("Blogs").First(&user).Error; err != nil {
+	if err = config.DB.Model(&model.User{}).Error; err != nil {
 		return
 	}
 	return

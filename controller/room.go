@@ -10,7 +10,7 @@ import (
 	"github.com/labstack/echo/v4"
 )
 
-func GetRoomcontroller(c echo.Context) error {
+func GetRoomsController(c echo.Context) error {
 	rooms, e := usecase.GetListRooms()
 	if e != nil {
 		return echo.NewHTTPError(http.StatusBadRequest, e.Error())
@@ -28,7 +28,7 @@ func GetRoomController(c echo.Context) error {
 
 	if err != nil {
 		return c.JSON(http.StatusBadRequest, map[string]interface{}{
-			"messages":         "error get room",
+			"messages":         "data kamar tidak tersedia",
 			"errorDescription": err,
 		})
 	}

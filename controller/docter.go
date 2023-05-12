@@ -28,7 +28,7 @@ func GetDocterController(c echo.Context) error {
 
 	if err != nil {
 		return c.JSON(http.StatusBadRequest, map[string]interface{}{
-			"messages":         "error get docter",
+			"messages":         "data docter tidak tersedia",
 			"errorDescription": err,
 		})
 	}
